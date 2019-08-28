@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="keywords" content="云视空,智能监控,安保服务">
+    <title>LiveCloud</title>
+    <link href="image/logoicon_alarm.ico" rel="shortcut icon" type="image/x-icon" media="screen">
+    <link href="image/logoicon_alarm.ico" rel="icon" type="image/x-icon">
+    <link href="image/lo.ico" rel="Bookmark">
+
+    <!--样式1-->
+    <link href="css/mainStyle.css" rel="stylesheet">
+    <!--bootstrap-->
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <meta name="description" content="云视空官方网站">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script src="js/mainStyle.min.js" type="text/javascript"></script>
+    <script>
+        window.onload=function () {
+/*            setTimeout(function () {
+                var lang = (navigator.systemLanguage?navigator.systemLanguage:navigator.language);
+                //获取浏览器配置语言 #括号内是个运算，运算过后赋值给lang，当?前的内容为true时把?后的值赋给lang，为False时把:后的值赋给lang
+                var lang = lang.substr(0, 2);//获取lang字符串的前两位
+                if(lang == 'zh'){
+                    window.location.href="indexPcBeta2.html";
+                }else{
+                    window.location.href="indexPcBeta2.html";
+                };
+            },500);*/
+            $(".bodyMainStyDis").hide()
+            $(".bodyMainStyNo").show();
+        }
+    </script>
+</head>
+<body class="body_color">
+<div class="bodyMainStyDis" >
+    <div class="loading loadSty" id="bodyMainStyDis">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<div class="bodyMainStyNo">
+    <div class="bodyBackground">
+<!--        <img src="pictures/mob3.jpg" id="pictureID">-->
+<!--        <div class="mWait mBBlock" id="mWait" onload="mWait()"></div>-->
+        <div id="box" class="mBNone"></div>
+    </div>
+    <div class="bodyMain">
+        <div class="right-btn" id="right-btn">
+            <div class="left right-btn-tab">
+                <div class="right-btn-tab-main" id="btn_in" data-toggle="tooltip" data-placement="left" title="alarmsecur.com" onclick="window.open('http://www.alarmsecur.com')">
+                    <img src="image/qOu.png" class="btnQiZhi">
+                </div>
+                <div class="right-btn-tab-main" id="btn_com" data-toggle="tooltip" data-placement="left" title="alarmsecur.in" onclick="window.open('http://www.alarmsecur.in')">
+                    <img src="image/qIn.png" class="btnQiZhi">
+                </div>
+                <div class="right-btn-tab-main" id="btn_qq" data-toggle="tooltip" data-placement="left" title="Live Alarm Center" onclick="window.open('http://arp.alarmsecur.cn:8080/AlarmServiceProviderAdmin/')">
+                    <img src="image/iMRBtn.png">
+                </div>
+            </div>
+        </div>
+        <div class="mainTitleSty">
+            <div class="mainTSMain">
+                <img src="image/logo-groot.png" class="logoStyle" id="mainLogo">
+                <ul class="titleTop">
+                    <li id="pcHome"> Home</li>
+                    <li id="pcBurglary"> Cooperation</li>
+                    <li id="pcSubscription"> Subscription</li>
+                    <li id="pcProducts"> Products</li>
+                    <li id="pcManuals"> Manuals</li>
+                    <li id="pcPartners"> Partners</li>
+                    <li id="pcAboutUs"> About Us</li>
+                </ul>
+            </div>
+        </div>
+        <div class="pictureIDZ" id="pictureIDZ">
+            <div class="mainTitleStyO"></div>
+            <div class="picStyle">
+                <div class="textPicOne pictureH">
+                    WORLDWIDE ACCESS AND CONTROL AT ANYTIME WITH YOUR MOBILE PHONE
+                </div>
+                <div class="linePic"></div>
+                <div class="btnPic" id="btnADown">APP DOWNLOAD</div>
+            </div>
+        </div>
+        <div class="bodyTwo" id="bodyTwo">
+            <div class="bodyTwoMain">
+                <h3 class="bTwoTittle">
+                    AlarmSecur System – How AlarmSecur Works
+                </h3>
+                <div class="bTwoLinePic"></div>
+                <div class="bTwoMainPic">
+                    <div class="bTwoF">
+                        <h6 class="bTwoFTittle">Siren Is Activated</h6>
+                        <div class="bTwoFImgO"><img src="image/imgMainTwoL.png" class="imgMainTwo" /></div>
+                        <div class="bTwoFTextO">
+                            AlarmSecur high power siren receives wireless signal and <span class="bTwoFTextGray">gives off strong strobe light with high siren volume</span> to scare away the intruders..
+                        </div>
+                    </div>
+                    <div class="bTwoF">
+                        <h6 class="bTwoFTittle">Guard Response Intervention</h6>
+                        <div class="bTwoFImgO"><img src="image/imgMainTwoR.png" class="imgMainTwo" /></div>
+                        <div class="bTwoFTextO">
+                            <span class="bTwoFTextGray">Our experts from The Live Alarm Centre</span> will analyze all the information collected by our Alarm Security System and will make an informed decision on whether Guard Response intervention is necessary or not.
+                        </div>
+                    </div>
+                </div>
+                <div class="bTwoBtn" id="alarmSystemBtn">
+                    AlarmSecur System
+                </div>
+            </div>
+        </div>
+        <div class="bodyThree" id="bodyThree">
+            <div class="bodyThreeMain">
+                <div class="bTwoF">
+                    <h3 class="bTwoTittle">
+                        WHAT DO WE PROVIDE YOU
+                    </h3>
+                    <div class="bThreeLinePic"></div>
+                    <div class="bThreeMain bThreeMainH">
+                        <div class="bThreeL">
+                            <div class="bThreeImg bThreeImgO"><img src="image/imgMTP.png" class="imgMainThree" /></div>
+                        </div>
+                        <div class="bThreeR">
+                            <h6 class="bThreeFTittle">24 x 7 Worldwide Access & Control</h6>
+                            <ul class="bThreeUL">
+                                <li>With the app of AlarmSecur you receive directly photo and video which contains the needed visual verification.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bThreeMain bThreeMainH">
+                        <div class="bThreeL">
+                            <div class="bThreeImg bThreeImgO"><img src="image/imgMTApp.png" class="imgMainThreeN" /></div>
+                        </div>
+                        <div class="bThreeR">
+                            <h6 class="bThreeFTittle">Lifetime App And Web Support</h6>
+                            <ul class="bThreeUL">
+                                <li>You get an App that is free for Life and get 24×7 support for any feature or service.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bThreeMain">
+                        <div class="bThreeL">
+                            <div class="bThreeImg bThreeImgO"><img src="image/imgMTPhone.png" class="imgMainThree" /></div>
+                        </div>
+                        <div class="bThreeR">
+                            <h6 class="bThreeFTittle">Mobile Friendly Security Solution</h6>
+                            <ul class="bThreeUL">
+                                <li>Y24-hour security: You and your contacts get a push alarm notification when the alarm is triggered,
+                                    with photo and video recording. Direct viewing is also possible. With this information you can contact
+                                    the police or fire department immediately. You are also able to move the camera and review recorded footage.
+                                    The system has a built-in speaker and microphone.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bTwoF">
+                    <div class="bThreeRight">
+                        <div class="boxPhone" >
+                            <div id="boxPhone"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyFour" id="bodyFour">
+            <div class="bodyFourMain">
+                <div class="bFourTittle">WHATS YOUR NEXT MOVE ?</div>
+                <div class="bTwoLinePic"></div>
+                <div class="bFourMain">
+                    <div class="bTwoF">
+                        <div class="bFourLeft">
+                            <div class="bFourLRTittle">
+                                Home linkage?
+                            </div>
+                            <div class="bFourBtn" id="HLink">
+                                AlarmSecur system for your home
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bTwoF">
+                        <div class="bFourRight">
+                            <div class="bFourLRTittle">
+                                ...or Business Linkage?
+                            </div>
+                            <div class="bFourBtn" id="BLink">
+                                AlarmSecur system for business
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyFive" id="bodyFive">
+            <div class="bodyFourOther" id="bFOOne">
+                <div class="bodyFourMain">
+                    <div class="bFMOne">
+                        <div class="bOtherTittle">
+                            We protect what matters most to you 24 hours a day / 365 days a year
+                        </div>
+                        <div class="bTwoLinePic"></div>
+                        <ul class="bFMOneMain bFMOneMainTop ">
+                            <li>AlarmSecur makes sure that your safety and that of your family are not a problem. Our home alarms are directly connected to our live alarm center , where a team of specialized professionals work every day to ensure your protection.</li>
+                            <li>Any warning or emergency situation will be handled by one of our security experts in an average time of 45 seconds. Our live alarm center is at your service 24 hours a day, every day of the year, to activate the most appropriate security protocols for each occasion and to send, when necessary, an ambulance, fire service or Guard Response to your home.</li>
+                            <li>AlarmSecur is your best ally for protecting your home in any dangerous situation: if a burglar enters the house, if a domestic accident occurs, if a family member needs urgent medical care... Protect your loved ones with the safest home alarm.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="bodyFourOther" id="bFOTwo">
+                <div class="bodyFourMain">
+                    <div class="bFMOne">
+                        <div class="bOtherTittle">
+                            How we guarantee the security of your business
+                        </div>
+                        <div class="bTwoLinePic"></div>
+                        <ul class="bFMOneMain bFMOneMainTop bFMOneMainTopL">
+                            <li>The AlarmSecur is the market leader thanks to its technology, experience and methods. Our alarms for businesses adapt to the needs of each company, whether they are at offices, warehouses or commercial premises. First, we conduct a comprehensive study of your business and customize your security needs. Then we identify the weak points and address them with an installation without either works or cables, in under 24 hours. Get the best protection for your business!</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="bodyFiveMain" id="alarmSystem">
+                <div class="bTwoTittle">
+                    THE NUMBERS
+                </div>
+                <div class="bTwoLinePic"></div>
+                <div class="bFiveMain">
+                    <div class="bFiveMainLR">
+                        <div class="fMainImg"><img src="image/imgMainFiveL.png" class="fMainImgStyle"></div>
+                        <div class="fMainText">PageViews</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNum" id="PageV">8790</div>
+                    </div>
+                    <div class="bFiveMainLR">
+                        <div class="fMainImg"><img src="image/imgMainFiveV.png" class="fMainImgStyle"></div>
+                        <div class="fMainText">Customers Helped</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNum" id="CusH">9780</div>
+                    </div>
+                    <div class="bFiveMainLR">
+                        <div class="fMainImg"><img src="image/imgMainFiveS.png" class="fMainImgStyle"></div>
+                        <div class="fMainText">Installations In China</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNum" id="InsIC">5655</div>
+                    </div>
+                    <div class="bFiveMainLR">
+                        <div class="fMainImg"><img src="image/imgMainFiveP.png" class="fMainImgStyle"></div>
+                        <div class="fMainText">One Great App</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNum" id="OneGA">11000</div>
+                    </div>
+                </div>
+                <div class="bTwoTittle">
+                    AlarmSecur System
+                </div>
+                <div class="bTwoLinePic"></div>
+                <div class="bFiveMainNext">
+                    <div class="bFiveMainLRNext">
+                        <div class="fMainImg"><img src="image/iMFSan.png" class="fMainImgStyle"></div>
+                        <div class="fMainText">Guard response</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNumNext" >If an intrusion or emergency is verified, we will send a Security Guard to your property.</div>
+                    </div>
+                    <div class="bFiveMainLRNext">
+                        <div class="fMainImg"><img src="image/iMFSos.png" class="fMainImgStyle"></div>
+                        <div class="fMainTextNext">SOS Button for emergencies</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNumNext">Using the SOS button of a AlarmSecur System you can ask for help in case of emergency. We will call a Security Guard, the Fire Brigade or an ambulance whenever it is needed.</div>
+                    </div>
+                    <div class="bFiveMainLRNext">
+                        <div class="fMainImg"><img src="image/iMFSet.png" class="fMainImgStyle"></div>
+                        <div class="fMainTextNext">Lifelong Warranty and Maintenance</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNumNext" >All our AlarmSecur System devices have a lifelong warranty. We also provide a 24 h technical assistance to ensure that your alarm is always in perfect condition.</div>
+                    </div>
+
+                </div>
+                <div class="bFiveMainNext">
+                    <div class="bFiveMainLRNext">
+                        <div class="fMainImg"><img src="image/imgMainFiveP.png" class="fMainImgStyle"></div>
+                        <div class="fMainTextNext">Control your alarm with your mobile</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNumNext">With LiveCloud App you can be in control of your security from anywhere in the world. The app allows you to activate and deactivate the alarm and to see and hear what goes on inside of your home or business.</div>
+                    </div>
+                    <div class="bFiveMainLRNext">
+                        <div class="fMainImg"><img src="image/iMFTime.png" class="fMainImgStyle"></div>
+                        <div class="fMainTextNext">Response within 45 seconds</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNumNext" >When an alarm is triggered, our Alarm Receiving Centre will respond in an average time of 45 seconds. We will then evaluate the situation and activate our Security Alarm Protocol when needed.</div>
+                    </div>
+                    <div class="bFiveMainLRNext">
+                        <div class="fMainImg"><img src="image/iMF24h.png" class="fMainImgStyle"></div>
+                        <div class="fMainTextNext">24/7 Technical Service</div>
+                        <div class="fMainLine"></div>
+                        <div class="fMainNumNext">As a AlarmSecur Customer, you can benefit from a technical backup service 24 hours a day.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodySix">
+            <div class="bodySixMain">
+                <div class="bTwoTittle">
+                    OUR TEAM
+                </div>
+                <div class="bSixLinePic"></div>
+                <div class="bSixMainNext">
+                    <div class="bSixMainLR">
+                        <div class="sMainImg"><img src="image/sCEO.jpg" class="sMainImgStyle"></div>
+                        <div class="sMainText">Roderik Van Der Touw</div>
+                        <div class="sMainNumNext" >CEO</div>
+                    </div>
+                    <div class="bSixMainLR">
+                        <div class="sMainImg"><img src="image/sEm.jpg" class="sMainImgStyle"></div>
+                        <div class="sMainText">Simon Kraan</div>
+                        <div class="fMainNumNext">EMEA</div>
+                    </div>
+                    <div class="bSixMainLR">
+                        <div class="sMainImg"><img src="image/sIndia.jpg" class="sMainImgStyle"></div>
+                        <div class="sMainText">jibin mon</div>
+                        <div class="fMainNumNext" >Marketing Head - India Operations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyEight" id="bEAppDownLoad">
+            <div class="bodySixMain">
+                <div class="bTwoTittle">
+                    APP DOWNLOAD
+                </div>
+                <div class="bSixLinePic"></div>
+                <div class="bEMain">
+                    <div class="bEMainFloat">
+                        <div class="bEMFImg"><img src="image/iMAandD.png" class="bEMFImgStyle"></div>
+                        <div class="bEMFTextMB" id="bEMFTextMBAnd">
+                            <div class="bEMFText">
+                                <div class="bEMFTextM">
+                                    <img src="image/iMAand.png" class="bEMFTextLogo">
+                                    <div class="bEMFTextApp">ANDROID APP</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bEMainFloat">
+                        <div class="bEMFImg"><img src="image/iMAiosD.png" class="bEMFImgStyle"></div>
+                        <div class="bEMFTextMB" id="bEMFTextMBIOS">
+                            <div class="bEMFText">
+                                <div class="bEMFTextM">
+                                    <img src="image/iMAios.png" class="bEMFTextLogo">
+                                    <div class="bEMFTextApp">IOS APP</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodySeven">
+            <div class="bodySevenMain">
+                <div class="sLanguageM">
+                    <div class="sLanguage">
+                        <div class="sLanguageN">
+<!--                            <div class="sTextStyle" id="sTextCN">简体中文</div>
+                            <div class="lineBottom"></div>-->
+                            <div class="sTextStyle sTextStyleB" id="sTextEN">English</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sText">
+                    Copyright © 2013 - 2018 LiveCloud All Rights Reserved.粤ICP备17009360号-1
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/picMove.min.js" type="text/javascript"></script>
+<script>
+
+</script>
+<!--<script src="js/picSwitch.min.js"></script>-->
+</body>
+</html>

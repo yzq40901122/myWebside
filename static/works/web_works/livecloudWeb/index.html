@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>云视空</title>
+    <link href="images/logoicon.ico" rel="shortcut icon" type="image/x-icon" media="screen">
+    <link href="images/logoicon.ico" rel="icon" type="image/x-icon">
+    <link href="images/logoicon.ico" rel="Bookmark">
+    <!--样式1-->
+    <link href="css/mainStyle.css" rel="stylesheet">
+    <!--bootstrap-->
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <meta name="description" content="云视空官方网站">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<!--<script type="text/javascript" src="js/identify.js"></script>-->
+<script>
+    setTimeout(function () {
+        var lang = (navigator.systemLanguage?navigator.systemLanguage:navigator.language);
+        //获取浏览器配置语言 #括号内是个运算，运算过后赋值给lang，当?前的内容为true时把?后的值赋给lang，为False时把:后的值赋给lang
+        var lang = lang.substr(0, 2);//获取lang字符串的前两位
+        if(lang == 'zh'){
+            window.location.href="indexPcBeta2.html";
+        }else{
+            window.location.href="indexPcBeta2.html";
+        };
+    },500);
+</script>
+<div class="bodyMainStyDis">
+    <div class="loading loadSty">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+</body>
+
+</html>
