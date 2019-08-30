@@ -14,7 +14,7 @@
             <div class="right" id="workRightBtn"  v-on:click="worksMove(2)"></div>
         </transition>
         <ul>
-            <div id="worksList" class="clearfix">
+            <div id="worksList" class="clearfix" >
                 <li v-for="x in dataListShow" v-bind:key="x.dataId" v-on:click="dataUp(x)">
                     <router-link v-bind:to="'/detail/'+x.dataId">
                         <div class="show">
@@ -34,6 +34,9 @@
             </div>
             
         </ul>
+        <div class="progress-bar">
+            <div class="show-bar" id="showBar" v-setWidth></div>
+        </div>
     </div>
 </template>
 
@@ -52,7 +55,8 @@
                 searchtitle:{
                     title:"请输入项目标题",
                     content:""
-                }
+                },
+                firstWorksWidth:1
             }
         },
         props:{
@@ -77,49 +81,87 @@
                 this.rightSHow = false;
             },
             worksMove:function(x){
+                //JQ动画持续时间
+                const animateTime = 300;
 
-                const baseNum = 16;
-                let offsetNum = baseNum*(19.5+1.2);
-
+                let offsetNum = singleWidth();
+                //项目的可视区域宽度
+                let testWidth = document.getElementById("worksList").offsetWidth;
+                //单个项目的宽度
                 //1为左，2为右
                 if(x === 1){
                     let ulOffsetRight = document.getElementById("worksList").offsetLeft;
-                    // let ulOffsetRight = $("#worksList").offset().left;
+                    let w = document.getElementById("worksList").offsetWidth;
+                    // console.log(w);
                     if(ulOffsetRight<0){
-                        console.log(ulOffsetRight,"执行中");
-                        $('#worksList').stop().animate({marginLeft:"+=" + offsetNum},300);
+                        // console.log(ulOffsetRight,"执行中");
+                        $('#worksList').stop().animate({marginLeft:"+=" + offsetNum},animateTime);
+                        let percentWidth = computerWidth(testWidth - offsetNum,this.newDataList.length,offsetNum,this.firstWorksWidth);
+                        // console.log(percentWidth);
+                        
+                        $("#showBar").stop().animate({width:percentWidth+"%"},animateTime)
                     }
                     else{
                         console.log(ulOffsetRight,"已经到开头了");
                     }
                 }
                 else if(x === 2){
-                    let w = document.getElementById("worksList").offsetWidth;
-                    // console.log(w);
                     let childNum = Number(document.getElementById("worksList").childNodes.length);
                     // console.log(childNum);
                     let maxOffsetWidth = offsetNum*(childNum);
-                    if(maxOffsetWidth>w){
-                        console.log(w,maxOffsetWidth,"执行中");
-                        $('#worksList').stop().animate({marginLeft:"-=" + offsetNum},300);
+                    // console.log(maxOffsetWidth);
+                    
+                    if(maxOffsetWidth>testWidth){                        
+                        // console.log(testWidth);
+                        
+                        $('#worksList').stop().animate({marginLeft:"-=" + offsetNum},animateTime);
+
+                        let percentWidth = computerWidth(testWidth + offsetNum,this.newDataList.length,offsetNum,this.firstWorksWidth);
+                        console.log(percentWidth);
+                        
+                        $("#showBar").stop().animate({width:percentWidth+"%"},animateTime)
                     }
                     else{
-                        console.log(w,maxOffsetWidth,"已经到开头了");
+                        console.log(testWidth,maxOffsetWidth,"已经到开头了");
                     }
                 }
             }
         },
         created(){
-            let name = this.$route.params.id;
+            // let name = this.$route.params.id;          
         },
-        mounted(){
-            // console.log(this.newDataList);
+        beforeUpdate(){
+            // console.log("更新前"+this.newDataList.length);   
+            // const baseNum = 16;
+            // let worksOffseWidth = baseNum*(19.5+1.2)*this.newDataList.length;
+            // console.log(worksOffseWidth);
+             
+        },
+        directives:{
+            setWidth:{
+                bind:(el) => {
+                    // console.log(el);
+                    // console.log();
+                    
+                },
+                inserted:(el) => {
+                    // console.log(el.offsetWidth = 20);
+                }
+            }
         },
         watch:{
             dataList:function(data){
                 this.newDataList = data;
-                console.log(this.newDataList);
+
+                let worksWidth = document.getElementById("worksList").offsetWidth;
+                //计算单个项目的宽度
+                let testSize = singleWidth();
+                this.firstWorksWidth = worksWidth;
+
+                let percentWidth = computerWidth(worksWidth,this.newDataList.length,testSize,this.firstWorksWidth);
+                console.log(percentWidth);
                 
+                $("#showBar").stop().animate({width:percentWidth+"%"},300)
             }
         },
         computed:{
@@ -140,6 +182,48 @@
             "workslabel":label
         }
     };
+    function singleWidth(){
+        const maxWidth = 1200;
+        const minWidth = 980;
+        const baseNumMax = 16;
+        const baseNumMin = 12;
+
+        let windowWidth = document.body.offsetWidth;
+        if(windowWidth >= maxWidth){
+            return baseNumMax*(19.5+1.2);
+        }
+        else if(windowWidth >= minWidth && windowWidth <maxWidth){
+            return baseNumMin*(19.5+1.2);
+        }
+        else{
+            return baseNumMin*(19.5+1.2);
+        }
+        
+    }
+    function initMoreWidth(offWidth,datalength,single){
+
+    }
+    function computerWidth(offWidth,dataLength,single,initializeWidth){
+        let maxOffWidth = Number(dataLength)*Number(single);
+        let moreWidth,moreNum;
+        console.log(offWidth,initializeWidth);
+        
+        if(maxOffWidth<=initializeWidth){
+            return 100;
+        }
+        else{
+            for(let i = 0;i < dataLength;i++){
+                if(single*i>initializeWidth){
+                    /**
+                     * 返回的百分比应该是，当前窗口的宽度 / 单个项目的宽度*项目的个数+没有显示完整的那个项目的可视宽度
+                     * 
+                     * 没有显示完整的那个项目的可视宽度：这个是因为即使点击右侧的按钮，显示到最后一个，也会多余一个可视宽度的距离，所以总长度得加上
+                     */
+                    return (offWidth / (maxOffWidth+(initializeWidth-single*(i-1))))*100;
+                }
+            }
+        }
+    }
 </script>
 
 <style scoped>
@@ -339,6 +423,21 @@
 }
 .input-screen .input-style-div > span{
     background-position: -4px -138px;
+}
+.progress-bar{
+    width: 100%;
+    height: .2rem;
+    background: rgba(218, 218, 218, 0.5);
+    position: absolute;
+    bottom: 1rem;
+    border-radius: 0.6rem;
+    z-index: 2000;
+}
+.show-bar{
+    width: 10%;
+    height: 100%;
+    border-radius: 0.6rem;
+    background: linear-gradient(to right,#d2fafb, #6bc5d2);
 }
 .fade-enter-active,.fade-leave-active{
   transition: opacity .2s;
