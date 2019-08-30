@@ -200,13 +200,9 @@
         }
         
     }
-    function initMoreWidth(offWidth,datalength,single){
-
-    }
     function computerWidth(offWidth,dataLength,single,initializeWidth){
         let maxOffWidth = Number(dataLength)*Number(single);
-        let moreWidth,moreNum;
-        console.log(offWidth,initializeWidth);
+        // console.log(offWidth,initializeWidth);
         
         if(maxOffWidth<=initializeWidth){
             return 100;
