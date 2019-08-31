@@ -33,7 +33,7 @@
     float: left;
     /* background: #222328; */
     box-sizing: border-box;
-    padding: 7.5rem 0rem 3rem;
+    padding: 7.8rem 0rem 3rem;
     position: relative;
     border-radius: 2rem 0 0 2rem;
 }

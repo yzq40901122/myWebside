@@ -44,6 +44,11 @@
     import axios from 'axios';
     import label from "../components/WorksLabel.vue";
 
+    //JQ动画持续时间
+    const animateTime = 300;
+    const idName = "worksList"
+    let initializeWidth;
+
     export default {
         data(){
             return {
@@ -81,22 +86,21 @@
                 this.rightSHow = false;
             },
             worksMove:function(x){
-                //JQ动画持续时间
-                const animateTime = 300;
+                
 
                 let offsetNum = singleWidth();
                 //项目的可视区域宽度
-                let testWidth = document.getElementById("worksList").offsetWidth;
+                let testWidth = document.getElementById(idName).offsetWidth;
                 //单个项目的宽度
                 //1为左，2为右
                 if(x === 1){
-                    let ulOffsetRight = document.getElementById("worksList").offsetLeft;
-                    let w = document.getElementById("worksList").offsetWidth;
+                    let ulOffsetRight = document.getElementById(idName).offsetLeft;
+                    let w = document.getElementById(idName).offsetWidth;
                     // console.log(w);
                     if(ulOffsetRight<0){
                         // console.log(ulOffsetRight,"执行中");
-                        $('#worksList').stop().animate({marginLeft:"+=" + offsetNum},animateTime);
-                        let percentWidth = computerWidth(testWidth - offsetNum,this.newDataList.length,offsetNum,this.firstWorksWidth);
+                        $("#"+idName).stop().animate({marginLeft:"+=" + offsetNum},animateTime);
+                        let percentWidth = computerWidth(testWidth - offsetNum,this.newDataList.length,offsetNum,initializeWidth);
                         // console.log(percentWidth);
                         
                         $("#showBar").stop().animate({width:percentWidth+"%"},animateTime)
@@ -106,7 +110,7 @@
                     }
                 }
                 else if(x === 2){
-                    let childNum = Number(document.getElementById("worksList").childNodes.length);
+                    let childNum = Number(document.getElementById(idName).childNodes.length);
                     // console.log(childNum);
                     let maxOffsetWidth = offsetNum*(childNum);
                     // console.log(maxOffsetWidth);
@@ -114,9 +118,9 @@
                     if(maxOffsetWidth>testWidth){                        
                         // console.log(testWidth);
                         
-                        $('#worksList').stop().animate({marginLeft:"-=" + offsetNum},animateTime);
+                        $("#"+idName).stop().animate({marginLeft:"-=" + offsetNum},animateTime);
 
-                        let percentWidth = computerWidth(testWidth + offsetNum,this.newDataList.length,offsetNum,this.firstWorksWidth);
+                        let percentWidth = computerWidth(testWidth + offsetNum,this.newDataList.length,offsetNum,initializeWidth);
                         console.log(percentWidth);
                         
                         $("#showBar").stop().animate({width:percentWidth+"%"},animateTime)
@@ -137,6 +141,9 @@
             // console.log(worksOffseWidth);
              
         },
+        mounted(){
+            initializeWidth = document.getElementById(idName).offsetWidth;
+        },
         directives:{
             setWidth:{
                 bind:(el) => {
@@ -152,16 +159,23 @@
         watch:{
             dataList:function(data){
                 this.newDataList = data;
-
-                let worksWidth = document.getElementById("worksList").offsetWidth;
+                initialWorksDom(idName,initializeWidth,animateTime);
+                // console.log(this.newDataList);
+                // $('#worksList').stop().animate({marginLeft:0},animateTime);
+                let worksWidth = document.getElementById(idName).offsetWidth;
+                // console.log(worksWidth);
+                // console.log(initializeWidth);
+                
                 //计算单个项目的宽度
                 let testSize = singleWidth();
-                this.firstWorksWidth = worksWidth;
-
-                let percentWidth = computerWidth(worksWidth,this.newDataList.length,testSize,this.firstWorksWidth);
+                // this.firstWorksWidth = worksWidth;
+                // console.log("可视宽度"+worksWidth);
+                // console.log("宽度"+document.getElementById(idName).style.width);
+                
+                let percentWidth = computerWidth(initializeWidth,this.newDataList.length,testSize,initializeWidth);
                 console.log(percentWidth);
                 
-                $("#showBar").stop().animate({width:percentWidth+"%"},300)
+                $("#showBar").stop().animate({width:percentWidth+"%"},animateTime)
             }
         },
         computed:{
@@ -172,7 +186,6 @@
                         return currentValue.dataTittle.match(textWatch)
                     }
                     else{
-                        // console.log(data);
                         return currentValue;
                     }
                 })
@@ -182,6 +195,11 @@
             "workslabel":label
         }
     };
+    function initialWorksDom(id,x,time){
+        $('#'+id).stop().animate({marginLeft:0},time);
+        // $('#'+id).stop().animate({width:x},time);
+        // document.getElementById(id).style.width = x;
+    }
     function singleWidth(){
         const maxWidth = 1200;
         const minWidth = 980;
@@ -201,14 +219,17 @@
         
     }
     function computerWidth(offWidth,dataLength,single,initializeWidth){
-        let maxOffWidth = Number(dataLength)*Number(single);
-        // console.log(offWidth,initializeWidth);
+        // console.log("可视宽度"+offWidth );
+        // console.log("数据长度"+dataLength);
+        // console.log("单个宽度"+single);
+        // console.log("初始化可视宽度"+initializeWidth);
         
+        let maxOffWidth = Number(dataLength)*Number(single);
         if(maxOffWidth<=initializeWidth){
             return 100;
         }
         else{
-            for(let i = 0;i < dataLength;i++){
+            for(let i = 0;i <= dataLength;i++){
                 if(single*i>initializeWidth){
                     /**
                      * 返回的百分比应该是，当前窗口的宽度 / 单个项目的宽度*项目的个数+没有显示完整的那个项目的可视宽度
@@ -229,7 +250,7 @@
     height: 100%;
     border-radius: 0 2rem 2rem 0;
     box-sizing: border-box;
-    padding-top: 7.2rem;
+    padding-top: 7.5rem;
     position: relative;
     overflow: hidden;
 }
@@ -248,7 +269,6 @@
 }
 .works>ul li{
     width: 19.5rem;
-    height: 37.1rem;
     display: inline-block;
     /* float: left; */
     border-radius: 1.5rem 1.5rem 0 0;
@@ -281,7 +301,7 @@
     top: -1.8rem;
     width: 20.5rem;
     height: 33.6rem;
-    box-shadow: 0 1rem 2.5rem #d1d1d1;
+    box-shadow: 0 .5rem 2rem #e6e6e6;
     margin: 0 -0.5rem;
 }
 .right,.left{
@@ -425,7 +445,7 @@
     height: .2rem;
     background: rgba(218, 218, 218, 0.5);
     position: absolute;
-    bottom: 1rem;
+    bottom: 1.5rem;
     border-radius: 0.6rem;
     z-index: 2000;
 }
@@ -433,7 +453,7 @@
     width: 10%;
     height: 100%;
     border-radius: 0.6rem;
-    background: linear-gradient(to right,#d2fafb, #6bc5d2);
+    background: linear-gradient(to right,#b7e778, #40dab2);
 }
 .fade-enter-active,.fade-leave-active{
   transition: opacity .2s;
